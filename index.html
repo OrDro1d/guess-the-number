@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<title>Угадай число</title>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width,
+			initial-scale=1.0"
+		/>
+		<link rel="stylesheet" href="styles.css" />
+		<link rel="icon" href="favicon.ico" />
+	</head>
+
+	<body>
+		<div class="settings">
+			<button class="theme-mode"></button>
+			<button class="help"></button>
+		</div>
+		<main>
+			<div class="questioneer">
+				<p class="questioneer-message">Угадайте число!</p>
+			</div>
+			<div class="guess-form">
+				<input
+					class="guess-input"
+					min="0"
+					max="9"
+					type="number"
+					required
+				/>
+				<button class="guess-button">Отправить</button>
+			</div>
+		</main>
+		<script src="script.js"></script>
+	</body>
+</html>
