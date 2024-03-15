@@ -4,6 +4,7 @@ let isGamePlayed = false;
 const body = document.querySelector("body");
 const main = document.querySelector("main");
 const themeMode = document.querySelector(".theme-mode");
+const helpButton = document.querySelector(".help-button");
 const guessInput = document.querySelector(".guess-input");
 const guessButton = document.querySelector(".guess-button");
 const questioneer = document.querySelector(".questioneer");
@@ -57,6 +58,13 @@ const changeTheme = () => {
 		isDarkMode = true;
 	}
 };
+
+const helpAlert = () => {
+	alert(
+		"Добро пожаловать на нашу маленькую игру!\nУсловия просты: Вам нужно отгадать одну цифру от нуля до десяти. Возникли сложности? Неработает игра? Перезапустите компьютер, я не знаю. Ну или попробуйте связаться со мной."
+	);
+};
 // Сама программа
 guessButton.addEventListener("click", guessCheck);
 themeMode.addEventListener("click", changeTheme);
+helpButton.addEventListener("click", helpAlert);
