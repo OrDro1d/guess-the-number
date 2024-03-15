@@ -22,12 +22,19 @@ body {
 }
 
 .settings button {
-	border: 1px solid gray;
+	border: 1px solid #4d4d4d;
 	border-radius: 5px;
-	background-image: url("images/dark-theme.png");
-	padding: 24px;
+	padding: 14px;
 	margin: 10px;
 	cursor: pointer;
+}
+
+.theme-mode {
+	background-color: #212121;
+}
+
+.help {
+	background-color: gray;
 }
 
 main {
