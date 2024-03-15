@@ -1,5 +1,23 @@
 let isDarkMode = false;
 let isGamePlayed = false;
+const correctGuessAnswers = [
+	"Хмм, а ты не так глуп как я думал... Совершенно верно!",
+	"Неплохо, я действительно загадал именно эту цифру!",
+	"На этот раз ты отгадал, сыграем ещё раз?",
+	"Да, молодец.",
+	"Угадал!",
+	"Верно!",
+];
+const wrongGuessAnswers = [
+	"ХАХАХХА. Одна ошибка и ты... ОШИБСЯ!",
+	"Ииииии... Неверно! Попробуем ещё раз?",
+	"Nope. Try again!",
+	"Никак нет!",
+	"Не-а!",
+	"Неверно!",
+	"А вот и нет!",
+	"Попробуй. Ещё. Раз.",
+];
 // Элементы веб-страницы
 const body = document.querySelector("body");
 const main = document.querySelector("main");
@@ -14,7 +32,7 @@ const setDeafault = () => {
 	questioneer.style.backgroundColor = "antiquewhite";
 	questioneerMessage.textContent = "Угадайте число!";
 	guessInput.style.backgroundColor = "white";
-	guessInput.textContent = "";
+	guessInput.value = "";
 	guessButton.textContent = "Отправить";
 };
 
@@ -23,13 +41,13 @@ const guessCheck = () => {
 	if (guessInput.value !== "") {
 		if (guessInput.value === String(randNum)) {
 			questioneerMessage.textContent =
-				"Хмм, а ты не так глуп как я думал... Совершенно верно!";
+				correctGuessAnswers[Math.floor(Math.random() * 6)];
 			questioneer.style.backgroundColor = "#8cfd6c";
 			guessInput.style.backgroundColor = "#8cfd6c";
 			console.log(" -- ", guessInput.value, randNum);
 		} else {
 			questioneerMessage.textContent =
-				"ХАХАХХА. Одна ошибка и ты... ОШИБСЯ!";
+				wrongGuessAnswers[Math.floor(Math.random() * 8)];
 			questioneer.style.backgroundColor = "#ff6b6b";
 			guessInput.style.backgroundColor = "#ff6b6b";
 			console.log(" -- ", guessInput.value, randNum);
@@ -40,6 +58,13 @@ const guessCheck = () => {
 			setDeafault,
 			(options = { once: true })
 		);
+		if (guessInput.value >= 10) {
+			questioneerMessage.textContent =
+				"Введите цифру от нуля до десяти. Вы знаете как в эту игру играть?";
+			questioneer.style.backgroundColor = "yellow";
+			guessInput.style.backgroundColor = "yellow";
+			console.log(" -- ", guessInput.value, randNum);
+		}
 	}
 };
 
