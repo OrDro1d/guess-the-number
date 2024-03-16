@@ -39,7 +39,13 @@ const setDeafault = () => {
 const guessCheck = () => {
 	const randNum = Math.trunc(Math.random() * 10);
 	if (guessInput.value !== "") {
-		if (guessInput.value === String(randNum)) {
+		if (guessInput.value >= 10) {
+			questioneerMessage.textContent =
+				"Введите цифру от нуля до десяти. Вы знаете как в эту игру играть?";
+			questioneer.style.backgroundColor = "#ffff69";
+			guessInput.style.backgroundColor = "#ffff69";
+			console.log(" -- ", guessInput.value, randNum);
+		} else if (guessInput.value === String(randNum)) {
 			questioneerMessage.textContent =
 				correctGuessAnswers[Math.floor(Math.random() * 6)];
 			questioneer.style.backgroundColor = "#8cfd6c";
@@ -58,13 +64,6 @@ const guessCheck = () => {
 			setDeafault,
 			(options = { once: true })
 		);
-		if (guessInput.value >= 10) {
-			questioneerMessage.textContent =
-				"Введите цифру от нуля до десяти. Вы знаете как в эту игру играть?";
-			questioneer.style.backgroundColor = "yellow";
-			guessInput.style.backgroundColor = "yellow";
-			console.log(" -- ", guessInput.value, randNum);
-		}
 	}
 };
 
@@ -86,7 +85,7 @@ const changeTheme = () => {
 
 const helpAlert = () => {
 	alert(
-		"Добро пожаловать на нашу маленькую игру!\nУсловия просты: Вам нужно отгадать одну цифру от нуля до десяти. Возникли сложности? Неработает игра? Перезапустите компьютер, я не знаю. Ну или попробуйте связаться со мной."
+		"Добро пожаловать на нашу маленькую игру!\nУсловия просты: Вам нужно отгадать одну цифру от нуля до десяти. Возникли сложности? Неработает игра? Перезапустите компьютер, я не знаю. Ну или попробуйте связаться со мной.\nУдачи!"
 	);
 };
 // Сама программа
