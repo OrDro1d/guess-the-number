@@ -92,4 +92,8 @@ main {
 }
 
 .guess-button:active {
+	background-color: darkgray;
+	padding: 50px;
+	margin: 20px;
+	transition: 0.1s;
 }
