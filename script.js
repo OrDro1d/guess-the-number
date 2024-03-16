@@ -37,7 +37,7 @@ const setDeafault = () => {
 };
 
 const guessCheck = () => {
-	const randNum = Math.trunc(Math.random() * 10);
+	const randNum = Math.trunc(Math.random() * 9);
 	if (guessInput.value !== "") {
 		if (guessInput.value >= 10) {
 			questioneerMessage.textContent =
