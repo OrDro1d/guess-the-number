@@ -23,10 +23,11 @@ const body = document.querySelector("body");
 const main = document.querySelector("main");
 const themeMode = document.querySelector(".theme-mode");
 const helpButton = document.querySelector(".help-button");
-const guessInput = document.querySelector(".guess-input");
+const guessInput = document.querySelector(".guess textArea");
 const guessButton = document.querySelector(".guess-button");
 const questioneer = document.querySelector(".questioneer");
 const questioneerMessage = document.querySelector(".questioneer-message");
+const toDeveloper = document.querySelector(".to-developer");
 // Функции
 const setDeafault = () => {
 	questioneer.style.backgroundColor = "antiquewhite";
@@ -83,6 +84,33 @@ const changeTheme = () => {
 	}
 };
 
+const makeForm = () => {
+	const form = document.createElement("form");
+	const input = document.createElement("input");
+	const labelForEmail = document.createElement("label");
+	const labelForTextArea = document.createElement("label");
+	const textArea = document.createElement("textarea");
+	const button = document.createElement("button");
+	labelForEmail.setAttribute("for", "email");
+	labelForEmail.textContent = "Ваш E-mail: ";
+	input.id = "email";
+	input.type = "email";
+	labelForTextArea.id = "text";
+	textArea.textContent = "Ваше сообщение";
+	button.textContent = "Отправить";
+	form.style.position = "fixed";
+	form.style.right = "15px";
+	form.style.bottom = "15px";
+	form.style.zIndex = "1";
+	form.appendChild(labelForEmail);
+	form.appendChild(input);
+	form.appendChild(labelForTextArea);
+	form.appendChild(textArea);
+	form.appendChild(button);
+
+	document.body.insertBefore(form, main);
+};
+
 const helpAlert = () => {
 	alert(
 		"Добро пожаловать на нашу маленькую игру!\nУсловия просты: Вам нужно отгадать одну цифру от нуля до десяти. Возникли сложности? Неработает игра? Перезапустите компьютер, я не знаю. Ну или попробуйте связаться со мной.\nУдачи!"
@@ -92,3 +120,4 @@ const helpAlert = () => {
 guessButton.addEventListener("click", guessCheck);
 themeMode.addEventListener("click", changeTheme);
 helpButton.addEventListener("click", helpAlert);
+toDeveloper.addEventListener("click", makeForm);

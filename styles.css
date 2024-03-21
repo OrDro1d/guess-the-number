@@ -97,3 +97,11 @@ main {
 	margin: 20px;
 	transition: 0.1s;
 }
+
+.to-developer {
+	position: fixed;
+	right: 15px;
+	bottom: 15px;
+	text-decoration: none;
+	color: gray;
+}
