@@ -1,5 +1,7 @@
 let isDarkMode = false;
 let isGamePlayed = false;
+let isFormHidden = true;
+
 const correctGuessAnswers = [
 	"Хмм, а ты не так глуп как я думал... Совершенно верно!",
 	"Неплохо, я действительно загадал именно эту цифру!",
@@ -23,7 +25,7 @@ const body = document.querySelector("body");
 const main = document.querySelector("main");
 const themeMode = document.querySelector(".theme-mode");
 const helpButton = document.querySelector(".help-button");
-const guessInput = document.querySelector(".guess textArea");
+const guessInput = document.querySelector(".guess-input");
 const guessButton = document.querySelector(".guess-button");
 const questioneer = document.querySelector(".questioneer");
 const questioneerMessage = document.querySelector(".questioneer-message");
@@ -40,7 +42,7 @@ const setDeafault = () => {
 const guessCheck = () => {
 	const randNum = Math.trunc(Math.random() * 9);
 	if (guessInput.value !== "") {
-		if (guessInput.value >= 10) {
+		if (guessInput.value.length != 1) {
 			questioneerMessage.textContent =
 				"Введите цифру от нуля до десяти. Вы знаете как в эту игру играть?";
 			questioneer.style.backgroundColor = "#ffff69";
@@ -69,75 +71,82 @@ const guessCheck = () => {
 };
 
 const changeTheme = () => {
+	form = document.querySelector("form");
 	if (isDarkMode) {
 		body.style.backgroundColor = "white";
 		themeMode.style.backgroundColor = "#444";
 		themeMode.style.borderColor = "black";
 		main.style.boxShadow = "10px 10px 20px darkgray";
-		document.querySelector("form").style.boxShadow =
-			"10px 10px 20px darkgray";
+		if (form !== null) form.style.boxShadow = "10px 10px 20px darkgray";
 		isDarkMode = false;
 	} else {
 		body.style.backgroundColor = "#222";
 		themeMode.style.backgroundColor = "#dbdbdb";
 		themeMode.style.borderColor = "white";
 		main.style.boxShadow = "10px 10px 20px black";
-		document.querySelector("form").style.boxShadow = "10px 10px 20px black";
+		if (form !== null) form.style.boxShadow = "10px 10px 20px black";
 		isDarkMode = true;
 	}
 };
 
 const makeForm = () => {
-	const form = document.createElement("form");
-	const input = document.createElement("input");
-	const labelForEmail = document.createElement("label");
-	const labelForTextArea = document.createElement("label");
-	const textArea = document.createElement("textarea");
-	const button = document.createElement("button");
+	if (isFormHidden) {
+		const form = document.createElement("form");
+		const input = document.createElement("input");
+		const labelForEmail = document.createElement("label");
+		const labelForTextArea = document.createElement("label");
+		const textArea = document.createElement("textarea");
+		const button = document.createElement("button");
 
-	toDeveloper.removeEventListener("click", makeForm);
-	toDeveloper.remove();
+		labelForEmail.setAttribute("for", "email");
+		labelForEmail.textContent = "Ваш E-mail: ";
+		input.id = "email";
+		input.type = "email";
+		input.style.display = "block";
+		input.style.margin = "10px 30px 30px 30px";
+		labelForTextArea.setAttribute("for", "text");
+		labelForTextArea.textContent = "Ваше сообщение: ";
+		textArea.id = "text";
+		textArea.style.display = "block";
+		textArea.style.margin = "10px 30px 30px 30px";
+		button.style.backgroundColor = "lightgray";
+		button.style.borderStyle = "1px solid darkgray";
+		button.style.borderRadius = "5px";
+		button.style.fontSize = "16px";
+		button.style.cursor = "pointer";
+		button.style.padding = "10px";
+		button.textContent = "Отправить";
+		form.style.position = "fixed";
+		form.style.right = "15px";
+		form.style.bottom = "45px";
+		form.style.zIndex = "1";
+		form.style.backgroundColor = "antiquewhite";
+		form.style.padding = "30px";
+		form.style.borderRadius = "20px";
+		if (isDarkMode) {
+			form.style.boxShadow = "10px 10px 20px black";
+		} else {
+			form.style.boxShadow = "10px 10px 20px darkgray";
+		}
 
-	toDeveloper.setAttribute("disabled", "disabled");
-	labelForEmail.setAttribute("for", "email");
-	labelForEmail.textContent = "Ваш E-mail: ";
-	input.id = "email";
-	input.type = "email";
-	input.style.display = "block";
-	input.style.margin = "10px 30px 30px 30px";
-	labelForTextArea.setAttribute("for", "text");
-	labelForTextArea.textContent = "Ваше сообщение: ";
-	textArea.id = "text";
-	textArea.style.display = "block";
-	textArea.style.margin = "10px 30px 30px 30px";
-	// textArea.textContent = "Ваше сообщение";
-	form.style.position = "fixed";
-	form.style.right = "15px";
-	form.style.bottom = "15px";
-	form.style.zIndex = "1";
-	form.style.backgroundColor = "antiquewhite";
-	form.style.padding = "20px";
-	form.style.borderRadius = "20px";
-	if (isDarkMode) {
-		form.style.boxShadow = "10px 10px 20px black";
+		toDeveloper.textContent = "Скрыть форму";
+
+		form.appendChild(labelForEmail);
+		form.appendChild(input);
+		form.appendChild(labelForTextArea);
+		form.appendChild(textArea);
+		form.appendChild(button);
+
+		document.body.insertBefore(form, main);
+		isFormHidden = false;
 	} else {
-		form.style.boxShadow = "10px 10px 20px darkgray";
+		document.querySelector("form").remove();
+		toDeveloper.textContent = "Открыть форму";
+		isFormHidden = true;
 	}
-	button.style.backgroundColor = "lightgray";
-	button.style.borderStyle = "1px solid darkgray";
-	button.style.borderRadius = "10px";
-	button.style.fontSize = "16px";
-	button.style.cursor = "pointer";
-	button.style.padding = "20px";
-	button.textContent = "Отправить";
-	form.appendChild(labelForEmail);
-	form.appendChild(input);
-	form.appendChild(labelForTextArea);
-	form.appendChild(textArea);
-	form.appendChild(button);
-
-	document.body.insertBefore(form, main);
 };
+
+const hideForm = () => {};
 
 const helpAlert = () => {
 	alert(
