@@ -117,12 +117,12 @@ const makeForm = () => {
 	form.style.padding = "20px";
 	form.style.borderRadius = "20px";
 	if (isDarkMode) {
-		form.style.boxShadow = "10px 10px 20px darkgray";
-	} else {
 		form.style.boxShadow = "10px 10px 20px black";
+	} else {
+		form.style.boxShadow = "10px 10px 20px darkgray";
 	}
 	button.style.backgroundColor = "lightgray";
-	button.style.borderStyle = "1px solid lightgray";
+	button.style.borderStyle = "1px solid darkgray";
 	button.style.borderRadius = "30px";
 	button.style.fontSize = "16px";
 	button.style.cursor = "pointer";
