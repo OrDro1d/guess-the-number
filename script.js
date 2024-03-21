@@ -95,6 +95,9 @@ const makeForm = () => {
 	const textArea = document.createElement("textarea");
 	const button = document.createElement("button");
 
+	toDeveloper.removeEventListener("click", makeForm);
+	toDeveloper.remove();
+
 	toDeveloper.setAttribute("disabled", "disabled");
 	labelForEmail.setAttribute("for", "email");
 	labelForEmail.textContent = "Ваш E-mail: ";
@@ -108,7 +111,6 @@ const makeForm = () => {
 	textArea.style.display = "block";
 	textArea.style.margin = "10px 30px 30px 30px";
 	// textArea.textContent = "Ваше сообщение";
-	button.textContent = "Отправить";
 	form.style.position = "fixed";
 	form.style.right = "15px";
 	form.style.bottom = "15px";
@@ -123,10 +125,11 @@ const makeForm = () => {
 	}
 	button.style.backgroundColor = "lightgray";
 	button.style.borderStyle = "1px solid darkgray";
-	button.style.borderRadius = "30px";
+	button.style.borderRadius = "10px";
 	button.style.fontSize = "16px";
 	button.style.cursor = "pointer";
-	button.style.padding = "60px";
+	button.style.padding = "20px";
+	button.textContent = "Отправить";
 	form.appendChild(labelForEmail);
 	form.appendChild(input);
 	form.appendChild(labelForTextArea);
