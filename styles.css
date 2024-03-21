@@ -38,7 +38,6 @@ body {
 }
 
 main {
-	/* border: 1px solid black; */
 	border-radius: 60px;
 	max-width: 600px;
 	height: auto;
@@ -80,8 +79,6 @@ main {
 .guess-button {
 	background-color: lightgray;
 	border: 1px solid darkgray;
-	font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-		"Lucida Sans", Arial, sans-serif;
 	font-size: 16px;
 	cursor: pointer;
 	padding: 60px;

@@ -74,12 +74,15 @@ const changeTheme = () => {
 		themeMode.style.backgroundColor = "#444";
 		themeMode.style.borderColor = "black";
 		main.style.boxShadow = "10px 10px 20px darkgray";
+		document.querySelector("form").style.boxShadow =
+			"10px 10px 20px darkgray";
 		isDarkMode = false;
 	} else {
 		body.style.backgroundColor = "#222";
 		themeMode.style.backgroundColor = "#dbdbdb";
 		themeMode.style.borderColor = "white";
 		main.style.boxShadow = "10px 10px 20px black";
+		document.querySelector("form").style.boxShadow = "10px 10px 20px black";
 		isDarkMode = true;
 	}
 };
@@ -91,17 +94,39 @@ const makeForm = () => {
 	const labelForTextArea = document.createElement("label");
 	const textArea = document.createElement("textarea");
 	const button = document.createElement("button");
+
+	toDeveloper.setAttribute("disabled", "disabled");
 	labelForEmail.setAttribute("for", "email");
 	labelForEmail.textContent = "Ваш E-mail: ";
 	input.id = "email";
 	input.type = "email";
-	labelForTextArea.id = "text";
-	textArea.textContent = "Ваше сообщение";
+	input.style.display = "block";
+	input.style.margin = "10px 30px 30px 30px";
+	labelForTextArea.setAttribute("for", "text");
+	labelForTextArea.textContent = "Ваше сообщение: ";
+	textArea.id = "text";
+	textArea.style.display = "block";
+	textArea.style.margin = "10px 30px 30px 30px";
+	// textArea.textContent = "Ваше сообщение";
 	button.textContent = "Отправить";
 	form.style.position = "fixed";
 	form.style.right = "15px";
 	form.style.bottom = "15px";
 	form.style.zIndex = "1";
+	form.style.backgroundColor = "antiquewhite";
+	form.style.padding = "20px";
+	form.style.borderRadius = "20px";
+	if (isDarkMode) {
+		form.style.boxShadow = "10px 10px 20px darkgray";
+	} else {
+		form.style.boxShadow = "10px 10px 20px black";
+	}
+	button.style.backgroundColor = "lightgray";
+	button.style.borderStyle = "1px solid lightgray";
+	button.style.borderRadius = "30px";
+	button.style.fontSize = "16px";
+	button.style.cursor = "pointer";
+	button.style.padding = "60px";
 	form.appendChild(labelForEmail);
 	form.appendChild(input);
 	form.appendChild(labelForTextArea);
