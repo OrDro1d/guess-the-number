@@ -1,6 +1,5 @@
 let isDarkMode = false;
 let isGamePlayed = false;
-let isFormHidden = true;
 
 const correctGuessAnswers = [
 	"Хмм, а ты не так глуп как я думал... Совершенно верно!",
@@ -90,63 +89,67 @@ const changeTheme = () => {
 };
 
 const makeForm = () => {
-	if (isFormHidden) {
-		const form = document.createElement("form");
-		const input = document.createElement("input");
-		const labelForEmail = document.createElement("label");
-		const labelForTextArea = document.createElement("label");
-		const textArea = document.createElement("textarea");
-		const button = document.createElement("button");
+	const form = document.createElement("form");
+	form.hidden = true;
 
-		labelForEmail.setAttribute("for", "email");
-		labelForEmail.textContent = "Ваш E-mail: ";
-		input.id = "email";
-		input.type = "email";
-		input.style.display = "block";
-		input.style.margin = "10px 30px 30px 30px";
-		labelForTextArea.setAttribute("for", "text");
-		labelForTextArea.textContent = "Ваше сообщение: ";
-		textArea.id = "text";
-		textArea.style.display = "block";
-		textArea.style.margin = "10px 30px 30px 30px";
-		button.style.backgroundColor = "lightgray";
-		button.style.borderStyle = "1px solid darkgray";
-		button.style.borderRadius = "5px";
-		button.style.fontSize = "16px";
-		button.style.cursor = "pointer";
-		button.style.padding = "10px";
-		button.textContent = "Отправить";
-		form.style.position = "fixed";
-		form.style.right = "15px";
-		form.style.bottom = "45px";
-		form.style.zIndex = "1";
-		form.style.backgroundColor = "antiquewhite";
-		form.style.padding = "30px";
-		form.style.borderRadius = "20px";
-		if (isDarkMode) {
-			form.style.boxShadow = "10px 10px 20px black";
-		} else {
-			form.style.boxShadow = "10px 10px 20px darkgray";
-		}
+	const input = document.createElement("input");
+	const labelForEmail = document.createElement("label");
+	const labelForTextArea = document.createElement("label");
+	const textArea = document.createElement("textarea");
+	const button = document.createElement("button");
 
-		toDeveloper.textContent = "Скрыть форму";
+	labelForEmail.setAttribute("for", "email");
+	labelForEmail.textContent = "Ваш E-mail: ";
+	input.id = "email";
+	input.type = "email";
+	input.style.display = "block";
+	input.style.margin = "10px 30px 30px 30px";
+	labelForTextArea.setAttribute("for", "text");
+	labelForTextArea.textContent = "Ваше сообщение: ";
+	textArea.id = "text";
+	textArea.style.display = "block";
+	textArea.style.margin = "10px 30px 30px 30px";
+	button.style.backgroundColor = "lightgray";
+	button.style.border = "1px solid darkgray";
+	button.style.borderRadius = "5px";
+	button.style.fontSize = "16px";
+	button.style.cursor = "pointer";
+	button.style.padding = "10px";
+	button.textContent = "Отправить";
+	form.style.position = "fixed";
+	form.style.right = "15px";
+	form.style.bottom = "45px";
+	form.style.zIndex = "1";
+	form.style.backgroundColor = "antiquewhite";
+	form.style.padding = "30px";
+	form.style.borderRadius = "20px";
 
-		form.appendChild(labelForEmail);
-		form.appendChild(input);
-		form.appendChild(labelForTextArea);
-		form.appendChild(textArea);
-		form.appendChild(button);
-
-		document.body.insertBefore(form, main);
-		isFormHidden = false;
+	if (isDarkMode) {
+		form.style.boxShadow = "10px 10px 20px black";
 	} else {
-		document.querySelector("form").remove();
-		toDeveloper.textContent = "Открыть форму";
-		isFormHidden = true;
+		form.style.boxShadow = "10px 10px 20px darkgray";
 	}
+
+	form.appendChild(labelForEmail);
+	form.appendChild(input);
+	form.appendChild(labelForTextArea);
+	form.appendChild(textArea);
+	form.appendChild(button);
+
+	document.body.insertBefore(form, main);
 };
 
-const hideForm = () => {};
+makeForm();
+
+const showForm = () => {
+	if (document.querySelector("form").hidden === true) {
+		toDeveloper.textContent = "Скрыть форму";
+		document.querySelector("form").hidden = false;
+	} else {
+		toDeveloper.textContent = "Открыть форму";
+		document.querySelector("form").hidden = true;
+	}
+};
 
 const helpAlert = () => {
 	alert(
@@ -157,4 +160,4 @@ const helpAlert = () => {
 guessButton.addEventListener("click", guessCheck);
 themeMode.addEventListener("click", changeTheme);
 helpButton.addEventListener("click", helpAlert);
-toDeveloper.addEventListener("click", makeForm);
+toDeveloper.addEventListener("click", showForm);
