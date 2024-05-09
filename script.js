@@ -44,7 +44,7 @@ const guessCheck = () => {
 	if (guessInput.value !== "") {
 		if (guessInput.value.length != 1) {
 			questioneerMessage.textContent =
-				"Введите цифру от нуля до десяти. Вы знаете как в эту игру играть?";
+				"Введите цифру от нуля до десяти. Вы ведь знали это, да?";
 			questioneer.style.backgroundColor = "#ffff69";
 			guessInput.style.backgroundColor = "#ffff69";
 			console.log(" -- ", guessInput.value, randNum);
