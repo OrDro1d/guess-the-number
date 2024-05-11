@@ -18,12 +18,18 @@
 			<button class="theme-mode"></button>
 			<button class="help-button"></button>
 		</div>
-		<form class="form">
-			<label for="email">Ваш e-mail:</label>
-			<input id="email" type="email" />
-			<label for="text">Ваше сообщение:</label>
-			<textarea id="text"></textarea>
-			<button>Отправить</button>
+		<form class="form" hidden>
+			<div>
+				<label for="email">Ваш e-mail:</label>
+				<input id="email" type="email" />
+				<label for="text">Ваше сообщение:</label>
+				<textarea id="text"></textarea>
+			</div>
+
+			<div>
+				<button>Отправить</button>
+				<button>Сбросить</button>
+			</div>
 		</form>
 		<main>
 			<div class="questioneer">
@@ -37,6 +43,7 @@
 					type="number"
 					required
 				/>
+
 				<button class="guess-button">Отправить</button>
 			</div>
 		</main>

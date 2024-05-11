@@ -40,6 +40,7 @@ body {
 main {
 	border-radius: 60px;
 	max-width: 600px;
+	min-width: 320px;
 	height: auto;
 	margin: auto;
 	padding: 30px;
@@ -63,10 +64,13 @@ main {
 
 .guess-form {
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: space-around;
+	flex-wrap: wrap;
 }
 
 .guess-input {
+	box-sizing: border-box;
+	width: 230px;
 	font-size: 32px;
 	font-weight: lighter;
 	padding: 60px;
@@ -77,6 +81,8 @@ main {
 }
 
 .guess-button {
+	box-sizing: border-box;
+	width: 230px;
 	background-color: lightgray;
 	border: 1px solid darkgray;
 	font-size: 16px;
@@ -91,8 +97,8 @@ main {
 .guess-button:active {
 	background-color: darkgray;
 	padding: 50px;
-	margin: 20px;
-	transition: 0.1s;
+	margin: 10px;
+	transition: 0.2s;
 }
 
 .form-renderer {
