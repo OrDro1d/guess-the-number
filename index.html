@@ -9,6 +9,7 @@
 			initial-scale=1.0"
 		/>
 		<link rel="stylesheet" href="styles.css" />
+		<link rel="stylesheet" href="form-styles.css" />
 		<link rel="icon" href="favicon.ico" />
 	</head>
 
@@ -17,6 +18,13 @@
 			<button class="theme-mode"></button>
 			<button class="help-button"></button>
 		</div>
+		<form class="form">
+			<label for="email">Ваш e-mail:</label>
+			<input id="email" type="email" />
+			<label for="text">Ваше сообщение:</label>
+			<textarea id="text"></textarea>
+			<button>Отправить</button>
+		</form>
 		<main>
 			<div class="questioneer">
 				<p class="questioneer-message">Угадайте число!</p>
@@ -32,7 +40,7 @@
 				<button class="guess-button">Отправить</button>
 			</div>
 		</main>
-		<a class="to-developer" href="#">Напишите нам!</a>
+		<a class="form-renderer" href="#">Напишите нам!</a>
 		<script src="script.js"></script>
 	</body>
 </html>

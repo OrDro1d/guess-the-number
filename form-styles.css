@@ -1,0 +1,31 @@
+.form {
+	position: fixed;
+	right: 15px;
+	bottom: 45px;
+	z-index: 1;
+	background-color: antiquewhite;
+	padding: 30px;
+	border-radius: 20px;
+	box-shadow: 10px 10px 20px darkgray;
+}
+
+.form > input {
+	display: block;
+	margin: 10px 30px 30px 30px;
+}
+
+.form > textarea {
+	display: block;
+	margin: 10px 30px 30px 30px;
+	max-height: 200px;
+	max-width: 300px;
+}
+
+.form > button {
+	background-color: lightgray;
+	border: 1px solid darkgray;
+	border-radius: 5px;
+	font-size: 16px;
+	cursor: pointer;
+	padding: 10px;
+}

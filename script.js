@@ -1,4 +1,4 @@
-let isDarkMode = false;
+let isDarkModeEnabled = false;
 let isGamePlayed = false;
 
 const correctGuessAnswers = [
@@ -28,7 +28,8 @@ const guessInput = document.querySelector(".guess-input");
 const guessButton = document.querySelector(".guess-button");
 const questioneer = document.querySelector(".questioneer");
 const questioneerMessage = document.querySelector(".questioneer-message");
-const toDeveloper = document.querySelector(".to-developer");
+const formRenderer = document.querySelector(".form-renderer");
+const form = document.querySelector(".form");
 // Функции
 const setDeafault = () => {
 	questioneer.style.backgroundColor = "antiquewhite";
@@ -70,85 +71,35 @@ const guessCheck = () => {
 };
 
 const changeTheme = () => {
-	form = document.querySelector("form");
-	if (isDarkMode) {
+	if (isDarkModeEnabled) {
 		body.style.backgroundColor = "white";
 		themeMode.style.backgroundColor = "#444";
 		themeMode.style.borderColor = "black";
 		main.style.boxShadow = "10px 10px 20px darkgray";
-		if (form !== null) form.style.boxShadow = "10px 10px 20px darkgray";
-		isDarkMode = false;
+		form.style.boxShadow = "10px 10px 20px darkgray";
+		isDarkModeEnabled = false;
 	} else {
 		body.style.backgroundColor = "#222";
 		themeMode.style.backgroundColor = "#dbdbdb";
 		themeMode.style.borderColor = "white";
 		main.style.boxShadow = "10px 10px 20px black";
-		if (form !== null) form.style.boxShadow = "10px 10px 20px black";
-		isDarkMode = true;
-	}
-};
-
-const makeForm = () => {
-	const form = document.createElement("form");
-	form.hidden = true;
-
-	const input = document.createElement("input");
-	const labelForEmail = document.createElement("label");
-	const labelForTextArea = document.createElement("label");
-	const textArea = document.createElement("textarea");
-	const button = document.createElement("button");
-
-	labelForEmail.setAttribute("for", "email");
-	labelForEmail.textContent = "Ваш E-mail: ";
-	input.id = "email";
-	input.type = "email";
-	input.style.display = "block";
-	input.style.margin = "10px 30px 30px 30px";
-	labelForTextArea.setAttribute("for", "text");
-	labelForTextArea.textContent = "Ваше сообщение: ";
-	textArea.id = "text";
-	textArea.style.display = "block";
-	textArea.style.margin = "10px 30px 30px 30px";
-	button.style.backgroundColor = "lightgray";
-	button.style.border = "1px solid darkgray";
-	button.style.borderRadius = "5px";
-	button.style.fontSize = "16px";
-	button.style.cursor = "pointer";
-	button.style.padding = "10px";
-	button.textContent = "Отправить";
-	form.style.position = "fixed";
-	form.style.right = "15px";
-	form.style.bottom = "45px";
-	form.style.zIndex = "1";
-	form.style.backgroundColor = "antiquewhite";
-	form.style.padding = "30px";
-	form.style.borderRadius = "20px";
-
-	if (isDarkMode) {
 		form.style.boxShadow = "10px 10px 20px black";
-	} else {
-		form.style.boxShadow = "10px 10px 20px darkgray";
+		isDarkModeEnabled = true;
 	}
-
-	form.appendChild(labelForEmail);
-	form.appendChild(input);
-	form.appendChild(labelForTextArea);
-	form.appendChild(textArea);
-	form.appendChild(button);
-
-	document.body.insertBefore(form, main);
 };
-
-makeForm();
 
 const showForm = () => {
-	if (document.querySelector("form").hidden === true) {
-		toDeveloper.textContent = "Скрыть форму";
-		document.querySelector("form").hidden = false;
+	if (form.hidden === true) {
+		formRenderer.textContent = "Скрыть форму";
+		form.hidden = false;
 	} else {
-		toDeveloper.textContent = "Открыть форму";
-		document.querySelector("form").hidden = true;
+		formRenderer.textContent = "Открыть форму";
+		form.hidden = true;
 	}
+
+	isDarkModeEnabled
+		? (form.style.boxShadow = "10px 10px 20px black")
+		: (form.style.boxShadow = "10px 10px 20px darkgray");
 };
 
 const helpAlert = () => {
@@ -160,4 +111,4 @@ const helpAlert = () => {
 guessButton.addEventListener("click", guessCheck);
 themeMode.addEventListener("click", changeTheme);
 helpButton.addEventListener("click", helpAlert);
-toDeveloper.addEventListener("click", showForm);
+formRenderer.addEventListener("click", showForm);
