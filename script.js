@@ -76,14 +76,22 @@ const changeTheme = () => {
 		themeMode.style.backgroundColor = "#444";
 		themeMode.style.borderColor = "black";
 		main.style.boxShadow = "10px 10px 20px darkgray";
+		main.style.backgroundColor = "antiquewhite";
+		questioneerMessage.style.backgroundColor = "antiquewhite";
+
 		form.style.boxShadow = "10px 10px 20px darkgray";
+		form.style.backgroundColor = "antiquewhite";
 		isDarkModeEnabled = false;
 	} else {
 		body.style.backgroundColor = "#222";
 		themeMode.style.backgroundColor = "#dbdbdb";
 		themeMode.style.borderColor = "white";
 		main.style.boxShadow = "10px 10px 20px black";
+		main.style.backgroundColor = "rgb(232, 219, 202)";
+		questioneerMessage.style.backgroundColor = "rgb(232, 219, 202)";
+
 		form.style.boxShadow = "10px 10px 20px black";
+		form.style.backgroundColor = "rgb(232, 219, 202)";
 		isDarkModeEnabled = true;
 	}
 };

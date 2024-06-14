@@ -9,6 +9,10 @@
 	box-shadow: 10px 10px 20px darkgray;
 }
 
+.form .dark-theme {
+	box-shadow: 10px 10px 20px black;
+}
+
 .form > div:first-child {
 	padding: 20px;
 	border: 1px solid darkgray;
@@ -18,7 +22,7 @@
 .form > div:last-child {
 	display: flex;
 	justify-content: space-evenly;
-	padding: 20px;
+	padding: 30px 10px;
 }
 
 .form > div > input {
@@ -47,4 +51,15 @@
 	font-size: 16px;
 	cursor: pointer;
 	padding: 20px;
+}
+
+.form > div:last-child > button:hover {
+	background-color: rgb(238, 238, 238);
+}
+
+.form > div:last-child > button:active {
+	background-color: darkgray;
+	padding: 19px;
+	margin: 1px;
+	transition: 0.2s;
 }
